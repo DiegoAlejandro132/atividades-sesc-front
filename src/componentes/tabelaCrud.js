@@ -22,6 +22,49 @@ export default function TabelaCrud({
         cellStyle: { textAlign: 'center', }
     }), []);
 
+    const traducoes = {
+        // Traduções gerais
+        page: "Página",
+        more: "Mais",
+        to: "Até",
+        of: "de",
+        next: "Próximo",
+        last: "Último",
+        first: "Primeiro",
+        previous: "Anterior",
+        loadingOoo: "Aguarde enquanto os dados são carregados...",
+        blank: "Sem dados",
+        notBlank: "Com dados",
+        
+        // Filtros de texto
+        contains: "Contém",
+        notContains: "Não contém",
+        equals: "Igual a",
+        notEqual: "Diferente de",
+        startsWith: "Começa com",
+        endsWith: "Termina com",
+        
+        // Filtros de número
+        lessThan: 'Menor que',
+        greaterThan: 'Maior que',
+        lessThanOrEqual: 'Menor ou igual a',
+        greaterThanOrEqual: 'Maior ou igual a',
+        inRange: 'Entre',
+        inRangeStart: 'De',
+        inRangeEnd: 'Até',
+        
+        // Filtros de data
+        dateFormatOoo: "yyyy-mm-dd",
+        before: "Antes",
+        after: "Depois",
+        
+        // Botões
+        applyFilter: "Aplicar",
+        clearFilter: "Limpar",
+        resetFilter: "Redefinir",
+        cancelFilter: "Cancelar"
+    }
+
     const colunasComAcoes = useMemo(() => {
         return [
             ...colDefs,
@@ -72,6 +115,7 @@ export default function TabelaCrud({
                     rowData={rowData}
                     columnDefs={colunasComAcoes}
                     defaultColDef={defaultColDef}
+                    localeText={traducoes}
                 />
             </div>
         </div>
