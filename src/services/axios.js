@@ -38,12 +38,12 @@ const api = axios.create({
 });
 
 // Interceptor de requisição: envia camelCase → snake_case
-// api.interceptors.request.use(config => {
-//     if (config.data) {
-//         config.data = camelToSnake(config.data);
-//     }
-//     return config;
-// }, error => Promise.reject(error));
+api.interceptors.request.use(config => {
+    if (config.data) {
+        config.data = camelToSnake(config.data);
+    }
+    return config;
+}, error => Promise.reject(error));
 
 // Interceptor de resposta: recebe snake_case → camelCase
 api.interceptors.response.use(response => {

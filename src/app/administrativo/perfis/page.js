@@ -46,8 +46,7 @@ export default function Perfis() {
 
     const cadastrar = async(form) => {
         try{
-            const perfilResponsavel = JSON.stringify(form);
-            const response = await api.post('/responsavel', perfilResponsavel)
+            const response = await api.post('/responsavel', form)
             if (response.data){
                 setDados(dadosAntigos => [...dadosAntigos, response.data])
             }
@@ -59,8 +58,7 @@ export default function Perfis() {
     const editar = async(form) => {
         try{
             const id = form.id
-            const perfilResponsavel = JSON.stringify(form);
-            const response = await api.put(`/responsavel/${id}`, perfilResponsavel)
+            const response = await api.put(`/responsavel/${id}`, form)
             if (response.data){
                 setDados(valoresAntigos => 
                     valoresAntigos.map(item => item.id === response.data.id ? response.data : item)
@@ -74,7 +72,6 @@ export default function Perfis() {
     const excluir = async(id) => {
         try{
             const response = await api.delete(`/responsavel/${id}`)
-            console.log(response)
             setDados(valoresAntigos =>
                 valoresAntigos.filter(item => item.id !== id)
             )
