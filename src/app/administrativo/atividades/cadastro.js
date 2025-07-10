@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Cadastro({ salvar }) {
     const [aberto, setAberto] = useState(false);
-    const [form, setForm] = useState({ nome: '', matricula: '' });
+    const [form, setForm] = useState({ nome_atividade: '', descricao: '', unidade_sesc: '' });
 
     const abrir = () => setAberto(true);
     const fecharModal = () => setAberto(false);
@@ -16,7 +16,7 @@ export default function Cadastro({ salvar }) {
 
     const submit = (e) => {
         e.preventDefault();
-        setForm({ nome: '', matricula: '' });
+        setForm({ nome_atividade: '', descricao: '', unidade_sesc: '' });
         fecharModal();
         salvar(form);
     };
@@ -54,12 +54,12 @@ export default function Cadastro({ salvar }) {
 
                     <form onSubmit={submit} className="space-y-4 flex flex-col items-center">
                         <div className="flex flex-col w-64">
-                            <label htmlFor="nome" className="mb-1 font-medium">Nome</label>
+                            <label htmlFor="nome_atividade" className="mb-1 font-medium">Nome da atividade</label>
                             <input
                                 type="text"
-                                name="nome"
-                                id="nome"
-                                value={form.nome}
+                                name="nome_atividade"
+                                id="nome_atividade"
+                                value={form.nome_atividade}
                                 onChange={onChange}
                                 className="border rounded p-2"
                                 required
@@ -67,12 +67,25 @@ export default function Cadastro({ salvar }) {
                         </div>
 
                         <div className="flex flex-col w-64">
-                            <label htmlFor="matricula" className="mb-1 font-medium">Matrícula</label>
+                            <label htmlFor="descricao" className="mb-1 font-medium">Descrição</label>
                             <input
                                 type="text"
-                                name="matricula"
-                                id="matricula"
-                                value={form.matricula}
+                                name="descricao"
+                                id="descricao"
+                                value={form.descricao}
+                                onChange={onChange}
+                                className="border rounded p-2"
+                                required
+                            />
+                        </div>
+
+                        <div className="flex flex-col w-64">
+                            <label htmlFor="unidade_sesc" className="mb-1 font-medium">Unidade SESC</label>
+                            <input
+                                type="text"
+                                name="unidade_sesc"
+                                id="unidade_sesc"
+                                value={form.unidade_sesc}
                                 onChange={onChange}
                                 className="border rounded p-2"
                                 required

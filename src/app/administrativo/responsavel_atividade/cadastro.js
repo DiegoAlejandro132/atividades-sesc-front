@@ -20,14 +20,14 @@ export default function Cadastro({ salvar }) {
         fecharModal();
         salvar(form);
     };
-
+    // TODO: Alterar campos para selects conforme desenvolvimento do back-end
     return (
         <>
         <button
             onClick={abrir}
             className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
-            Adicionar
+            Vincular
         </button>
 
         {aberto && (
@@ -49,7 +49,7 @@ export default function Cadastro({ salvar }) {
                     </button>
 
                     <h3 className="text-xl font-bold text-center mb-6">
-                        Cadastro de perfil
+                        Vincular responsável à atividade
                     </h3>
 
                     <form onSubmit={submit} className="space-y-4 flex flex-col items-center">
