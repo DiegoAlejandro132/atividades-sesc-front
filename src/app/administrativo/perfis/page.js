@@ -40,6 +40,7 @@ export default function Perfis() {
             const response = await api.get('/responsavel')
             setDados(response.data)
         }catch(erro){
+            alert("Houve um erro ao listar os pefis")
             console.log(erro)
         }
     }
@@ -51,6 +52,7 @@ export default function Perfis() {
                 setDados(dadosAntigos => [...dadosAntigos, response.data])
             }
         }catch(erro){
+            alert("Houve um erro ao cadastrar o perfil")
             console.log(erro)
         }
     }
@@ -65,6 +67,7 @@ export default function Perfis() {
                 )
             }
         }catch(erro){
+            alert("Houve um erro ao editar o perfil desejado")
             console.log(erro)
         }
     }
@@ -76,6 +79,7 @@ export default function Perfis() {
                 valoresAntigos.filter(item => item.id !== id)
             )
         }catch(erro){
+            alert("Houve um erro ao excluir o perfil desejado")
             console.log(erro)
         }
     }

@@ -42,33 +42,34 @@ export default function ResponsaveisAtividades() {
             const response = await api.get('/atividade');
             setDados(response.data)
         } catch (erro) {
+            alert("Houve um erro ao listar as atividades")
             console.log(erro);
         }
     }
 
     const vincular = async (form) => {
         try {
-                const response = await api.post("atividade/vincular-responsavel", form);
+            const response = await api.post("atividade/vincular-responsavel", form);
 
-                if (response.data) {
-                    const responsavelVinculado = {
-                        id: response.data.id,
-                        nome: response.data.nome,
-                        matricula: response.data.matricula
-                    };
+            if (response.data) {
+                const responsavelVinculado = {
+                    id: response.data.id,
+                    nome: response.data.nome,
+                    matricula: response.data.matricula
+                };
 
-                    setDados(valoresAntigos => 
-                        valoresAntigos.map(item => 
-                            item.id === form.idAtividade 
-                                ? { ...item, responsavel: responsavelVinculado }
-                                : item
-                        )
-                    );
-                }
-
-            } catch (erro) {
-                console.log("Erro ao vincular:", erro);
+                setDados(valoresAntigos => 
+                    valoresAntigos.map(item => 
+                        item.id === form.idAtividade 
+                            ? { ...item, responsavel: responsavelVinculado }
+                            : item
+                    )
+                );
             }
+        } catch (erro) {
+            alert("Houve um erro ao vincular o responsavel à atividade")
+            console.log("Erro ao vincular:", erro);
+        }
     }
 
     const desvincular = async(idAtividade) => {
@@ -84,8 +85,8 @@ export default function ResponsaveisAtividades() {
                     )
                 );
             }
-            console.log(response)
         }catch(erro){
+            alert("Houve um erro ao desvincular o responsavel da atividade")
             console.log(erro)
         }
     }
