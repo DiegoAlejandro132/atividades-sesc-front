@@ -12,7 +12,8 @@ export default function TabelaCrud({
     colDefs = [],
     rowData = [],
     editar = () => {},
-    excluir = () => {}
+    excluir = () => {},
+    campoOpcoes = true
 }){
     const defaultColDef = useMemo(() => ({
         resizable: true,
@@ -66,7 +67,7 @@ export default function TabelaCrud({
     }
 
     const colunasComAcoes = useMemo(() => {
-        return [
+        return campoOpcoes ? [
             ...colDefs,
             {
                 headerName: "Ações",
@@ -105,7 +106,7 @@ export default function TabelaCrud({
                 sortable: false,
                 filter: false,
             }
-        ]
+        ] : [ ...colDefs ]
     }, [colDefs, editar, excluir])
 
     return(
