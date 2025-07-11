@@ -73,7 +73,6 @@ export default function Atividades() {
     const excluir = async(id) => {
         try{
             const response = await api.delete(`/atividade/${id}`)
-            console.log(response)
             setDados(valoresAntigos =>
                 valoresAntigos.filter(item => item.id !== id)
             )

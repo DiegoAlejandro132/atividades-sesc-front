@@ -1,20 +1,31 @@
 'use client';
 
 import TabelaCrud from '@/componentes/tabelaCrud';
+import { useEffect, useState } from 'react';
+import api from '@/services/axios';
 
 export default function Inscricoes() {
 
+    const [dados, setDados] = useState([])
+
     const colunas = [
-        { headerName: 'Cliente',        field: 'nome_cliente' },
-        { headerName: 'Atividade',      field: 'atividade' },
-        { headerName: 'Descrição',      field: 'descricao_atividade' },
-        { headerName: 'Unidade SESC',   field: 'unidade_sesc' },
+        { headerName: 'Cliente',        field: 'nomeCliente' },
+        { headerName: 'Atividade',      field: 'nomeAtividade' },
+        { headerName: 'Unidade SESC',   field: 'unidadeSesc' },
     ];
 
-    const dados = [
-        { nome_cliente: 'Cliente 1', atividade: 'atividade 1', descricao_atividade: "descricao", unidade_sesc: 'Unidade 1' },
-        { nome_cliente: 'Cliente 2', atividade: 'atividade 2', descricao_atividade: "descricao", unidade_sesc: 'Unidade 2' },
-    ];
+    const listar = async() => {
+        try{
+            const response = await api.get('/inscricao')
+            setDados(response.data)
+        }catch(erro){
+            console.log(erro)
+        }
+    }
+
+    useEffect(() => {
+        listar()
+    } ,[])
 
     return (
         <div className='bg-gray-100 min-h-screen'>
@@ -24,12 +35,7 @@ export default function Inscricoes() {
             <TabelaCrud 
                 colDefs={colunas}
                 rowData={dados}
-                editar={() => {
-                    alert("editar perfil")
-                }}
-                excluir={() => {
-                    alert("excluir perfil")
-                }}
+                campoOpcoes={false}
             />
         </div>
     )

@@ -48,27 +48,26 @@ export default function ResponsaveisAtividades() {
 
     const vincular = async (form) => {
         try {
-                const response = await api.post("atividade/vincular-responsavel", form);
+            const response = await api.post("atividade/vincular-responsavel", form);
 
-                if (response.data) {
-                    const responsavelVinculado = {
-                        id: response.data.id,
-                        nome: response.data.nome,
-                        matricula: response.data.matricula
-                    };
+            if (response.data) {
+                const responsavelVinculado = {
+                    id: response.data.id,
+                    nome: response.data.nome,
+                    matricula: response.data.matricula
+                };
 
-                    setDados(valoresAntigos => 
-                        valoresAntigos.map(item => 
-                            item.id === form.idAtividade 
-                                ? { ...item, responsavel: responsavelVinculado }
-                                : item
-                        )
-                    );
-                }
-
-            } catch (erro) {
-                console.log("Erro ao vincular:", erro);
+                setDados(valoresAntigos => 
+                    valoresAntigos.map(item => 
+                        item.id === form.idAtividade 
+                            ? { ...item, responsavel: responsavelVinculado }
+                            : item
+                    )
+                );
             }
+        } catch (erro) {
+            console.log("Erro ao vincular:", erro);
+        }
     }
 
     const desvincular = async(idAtividade) => {
@@ -84,7 +83,6 @@ export default function ResponsaveisAtividades() {
                     )
                 );
             }
-            console.log(response)
         }catch(erro){
             console.log(erro)
         }
