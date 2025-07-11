@@ -5,12 +5,19 @@ import Cadastro from '@/app/cliente/atividades/cadastro';
 import { useState, useEffect } from 'react';
 import api from '@/services/axios'
 import ModalInscricao from './inscricao';
+import { useRouter } from 'next/navigation'
+
 
 export default function Atividades() {
     const [modalCadastroAberto, setModalCadastroAberto] = useState(false);
     const [modalInscricaoAberto, setModalInscricaoAberto] = useState(false);
     const [atividadeSelecionada, setAtividadeSelecionada] = useState(null);
     const [dados, setDados] = useState([]);
+    const router = useRouter()
+
+    const irMenuAdm = () => {
+        router.push('/administrativo/menu')
+    }
 
     const formatarData = (params) => {
         if (!params.value) return '';
@@ -89,12 +96,20 @@ export default function Atividades() {
         <div className='bg-gray-100 max-h-50'>
             <div className='flex items-center justify-between px-4'>
                 <h1 className='text-4xl font-bold text-center p-4'>Atividades</h1>
-                <button
-                    onClick={abrirCadastro}
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
-                >
-                    Cadastrar
-                </button>
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={irMenuAdm}
+                        className="px-4 py-2 bg-yellow-500 hover:bg-yellow-700 text-white font-semibold rounded-lg shadow-md transition duration-300 cursor-pointer"
+                    >
+                        Ir para menu ADM
+                    </button>
+                    <button
+                        onClick={abrirCadastro}
+                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
+                    >
+                        Cadastrar
+                    </button>
+                </div>
                 <Cadastro
                     cadastrar={cadastrar}
                     aberto={modalCadastroAberto}
