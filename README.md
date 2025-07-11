@@ -1,4 +1,4 @@
-# Back end gerenciador de atividades
+# Front end gerenciador de atividades
 Projeto desenvolvido como teste prático para vaga de analista de sistemas.
 O sistema gerencia atividades, atribuindo relações com responsaveis e mantendo inscrições de clientes
 
