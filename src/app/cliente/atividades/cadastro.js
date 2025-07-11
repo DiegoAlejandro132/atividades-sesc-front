@@ -45,6 +45,7 @@ export default function Cadastro({
                 }));
             }
         }catch(erro){
+            alert("Houve um erro na consulta de seu cep. Certifique-se de ter inserido um valor correto")
             console.log(erro)
         }
     }

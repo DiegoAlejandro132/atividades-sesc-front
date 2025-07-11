@@ -41,6 +41,7 @@ export default function Atividades() {
             const response = await api.get('/atividade')
             setDados(response.data)
         }catch(erro){
+            alert("Houve um erro ao listar as atividades")
             console.log(erro)
         }
     }
@@ -52,6 +53,7 @@ export default function Atividades() {
                 setDados(dadosAntigos => [...dadosAntigos, response.data])
             }
         }catch(erro){
+            alert("Houve um erro ao cadastrar a sua atividade")
             console.log(erro)
         }
     }
@@ -66,6 +68,7 @@ export default function Atividades() {
                 )
             }
         }catch(erro){
+            alert("Houve um erro ao editar a sua atividade")
             console.log(erro)
         }
     }
@@ -77,6 +80,7 @@ export default function Atividades() {
                 valoresAntigos.filter(item => item.id !== id)
             )
         }catch(erro){
+            alert("Houve um erro ao excluir a sua atividade")
             console.log(erro)
         }
     }

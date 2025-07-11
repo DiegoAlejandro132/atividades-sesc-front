@@ -59,6 +59,7 @@ export default function Atividades() {
             const response = await api.get('/atividade')
             setDados(response.data)
         }catch(erro){
+            alert("Houve um erro ao listar as atividades")
             console.log(erro)
         }
     }
@@ -70,6 +71,7 @@ export default function Atividades() {
                 alert("cadastrado com sucesso")
             }
         }catch(erro){
+            alert("Houve um erro no seu cadastro")
             console.log(erro)
         }
     }

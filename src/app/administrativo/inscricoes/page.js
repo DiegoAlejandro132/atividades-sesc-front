@@ -19,6 +19,7 @@ export default function Inscricoes() {
             const response = await api.get('/inscricao')
             setDados(response.data)
         }catch(erro){
+            alert("Houve um erro ao listar as inscrições")
             console.log(erro)
         }
     }

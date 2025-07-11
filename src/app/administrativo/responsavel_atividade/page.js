@@ -42,6 +42,7 @@ export default function ResponsaveisAtividades() {
             const response = await api.get('/atividade');
             setDados(response.data)
         } catch (erro) {
+            alert("Houve um erro ao listar as atividades")
             console.log(erro);
         }
     }
@@ -66,6 +67,7 @@ export default function ResponsaveisAtividades() {
                 );
             }
         } catch (erro) {
+            alert("Houve um erro ao vincular o responsavel à atividade")
             console.log("Erro ao vincular:", erro);
         }
     }
@@ -84,6 +86,7 @@ export default function ResponsaveisAtividades() {
                 );
             }
         }catch(erro){
+            alert("Houve um erro ao desvincular o responsavel da atividade")
             console.log(erro)
         }
     }
